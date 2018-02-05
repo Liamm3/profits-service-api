@@ -5,6 +5,12 @@ const {ObjectID} = require('mongodb');
 const profits = require('./seed');
 const Profit = require('./model');
 
+beforeEach(async (done) => {
+  await Profit.remove({});
+  await Profit.insertMany(profits);
+  return done();
+});
+
 describe('GET /profits', () => {
   test('should get all profits', (done) => {
     request(app)
