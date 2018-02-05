@@ -9,6 +9,8 @@
     "start:dev": "nodemon index.js"
   },
   "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-google": "^0.9.1",
     "nodemon": "^1.14.12"
   }
 }
