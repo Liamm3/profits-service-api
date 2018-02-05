@@ -1,0 +1,14 @@
+{
+  "name": "profits-service-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Liam <lw@esyoil.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  }
+}
