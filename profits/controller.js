@@ -1,16 +1,33 @@
+const {ObjectID} = require('mongodb');
 const Profit = require('./model');
 
 const getProfits = async (req, res) => {
   try {
     const profits = await Profit.find({});
-    res.send(profits);
+    return res.send(profits);
   } catch (err) {
-    res.status(400).send(err);
+    return res.status(400).send(err);
   }
 };
 
-const getProfitById = (id) => {
+const getProfitById = async (req, res) => {
+  const {id} = req.params;
 
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+
+  try {
+    const profit = await Profit.findById(id);
+
+    if (!profit) {
+      return res.status(404).send();
+    }
+
+    return res.send(profit);
+  } catch (err) {
+    return res.status(400).send(err);
+  }
 };
 
 const createProfit = (value, name, month) => {

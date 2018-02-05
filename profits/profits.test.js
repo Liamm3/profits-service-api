@@ -5,6 +5,8 @@ const {ObjectID} = require('mongodb');
 const profits = require('./seed');
 const Profit = require('./model');
 
+jest.setTimeout(500);
+
 beforeEach(async (done) => {
   await Profit.remove({});
   await Profit.insertMany(profits);
@@ -31,7 +33,9 @@ describe('GET /profits/:id', () => {
       .get(`/profits/${profit._id.toHexString()}`)
       .expect(200)
       .expect((res) => {
-        expect(res.body).toEqual(profit);
+        expect(res.body.amount).toBe(profit.amount);
+        expect(res.body.name).toBe(profit.name);
+        expect(res.body.month).toBe(profit.month);
       })
       .end(done);
   });
