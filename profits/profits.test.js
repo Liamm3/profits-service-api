@@ -3,6 +3,7 @@ const app = require('../index');
 const {ObjectID} = require('mongodb');
 
 const profits = require('./seed');
+const Profit = require('./model');
 
 describe('GET /profits', () => {
   test('should get all profits', (done) => {
