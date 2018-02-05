@@ -17,11 +17,11 @@ const updateProfit = (profit, id) => {
 const deleteProfit = (id) => {
 
 };
- 
+
 module.exports = {
   getProfits,
   getProfitById,
   createProfit,
   updateProfit,
-  deleteProfit
+  deleteProfit,
 };
