@@ -12,11 +12,9 @@ const profitSchema = new Schema({
     minlength: 1,
     trim: true,
   },
-  month: {
-    type: Number,
+  year: {
+    type: Date,
     required: true,
-    min: 0,
-    max: 11,
   },
 });
 

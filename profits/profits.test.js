@@ -35,7 +35,7 @@ describe('GET /profits/:id', () => {
       .expect((res) => {
         expect(res.body.amount).toBe(profit.amount);
         expect(res.body.name).toBe(profit.name);
-        expect(res.body.month).toBe(profit.month);
+        expect(new Date(res.body.year)).toEqual(profit.year);
       })
       .end(done);
   });
