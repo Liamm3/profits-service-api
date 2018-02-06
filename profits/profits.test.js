@@ -47,7 +47,7 @@ describe('GET /profits/:id', () => {
       .end(done);
   });
 
-  test('should return 404 existent profit', (done) => {
+  test('should return 404 non existent profit', (done) => {
     const id = new ObjectID().toHexString();
 
     request(app)
@@ -133,7 +133,7 @@ describe('PUT /profits/:id', () => {
       .end(done);
   });
 
-  test('should return 404 existent profit', (done) => {
+  test('should return 404 non existent profit', (done) => {
     const id = new ObjectID().toHexString();
 
     request(app)
@@ -161,7 +161,7 @@ describe('DELETE /profits/:id', () => {
 
         try {
           const profit = await Profit.findById(id);
-          expect(profit).toNotExist();
+          expect(profit).toBeFalsy();
           return done();
         } catch (err) {
           return done(err);
@@ -176,7 +176,7 @@ describe('DELETE /profits/:id', () => {
       .end(done);
   });
 
-  test('should return 404 existent profit', (done) => {
+  test('should return 404 non existent profit', (done) => {
     const id = new ObjectID().toHexString();
 
     request(app)
