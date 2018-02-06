@@ -30,8 +30,13 @@ const getProfitById = async (req, res) => {
   }
 };
 
-const createProfit = (value, name, month) => {
-
+const createProfit = async (req, res) => {
+  try {
+    const profit = await Profit.create(req.body);
+    return res.send(profit);
+  } catch (err) {
+    return res.status(400).send(err);
+  }
 };
 
 const updateProfit = (profit, id) => {

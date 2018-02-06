@@ -61,16 +61,18 @@ describe('POST /profits', () => {
   test('should create a new profit', (done) => {
     const profit = {
       amount: 200,
-      month: 3,
+      name: 'Payment 4',
+      year: new Date(2018, 2),
     };
 
     request(app)
       .post('/profits')
-      .send(profit)
+      .send({...profit})
       .expect(200)
       .expect((res) => {
         expect(res.body.amount).toBe(profit.amount);
         expect(res.body.month).toBe(profit.month);
+        expect(new Date(res.body.year)).toEqual(profit.year);
       })
       .end(async (err, res) => {
         if (err) {
