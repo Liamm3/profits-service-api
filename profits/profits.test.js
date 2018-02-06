@@ -119,8 +119,8 @@ describe('PUT /profits/:id', () => {
       .send({amount: 300})
       .expect(200)
       .expect((res) => {
-        expect(res.body.amount).toBe(200);
-        expect(res.body.month).toBe(profit.amount);
+        expect(res.body.amount).toBe(300);
+        expect(new Date(res.body.year)).toEqual(profit.year);
       })
       .end(done);
   });
